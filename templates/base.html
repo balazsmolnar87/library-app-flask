@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dashboard{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="{{ url_for('book_manager') }}">Books</a></li>
+            <li><a href="{{ url_for('user_manager') }}">Users</a></li>
+            <li class="right">
+                You are logged in as <strong>{{ username }}</strong>,
+                <a href="{{ url_for('logout') }}">Log out</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+</html>
