@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "name": "Alice Johnson",
+        "address": "123 Maple St, Springfield, IL",
+        "email": "alice.johnson@example.com",
+        "phone": "+1 555-1234",
+        "loaned_book_ids": []
+    },
+    {
+        "id": 2,
+        "name": "Bob Smith",
+        "address": "456 Oak Rd, Springfield, IL",
+        "email": "bob.smith@example.com",
+        "phone": "+1 555-5678",
+        "loaned_book_ids": [1]
+    },
+    {
+        "id": 3,
+        "name": "Charlie Brown",
+        "address": "789 Pine Ave, Springfield, IL",
+        "email": "charlie.brown@example.com",
+        "phone": "+1 555-9101",
+        "loaned_book_ids": []
+    },
+    {
+        "id": 4,
+        "name": "Diana White",
+        "address": "101 Birch Blvd, Springfield, IL",
+        "email": "diana.white@example.com",
+        "phone": "+1 555-1122",
+        "loaned_book_ids": [2, 3]
+    },
+    {
+        "id": 5,
+        "name": "Edward Davis",
+        "address": "202 Cedar St, Springfield, IL",
+        "email": "edward.davis@example.com",
+        "phone": "+1 555-3344",
+        "loaned_book_ids": [4]
+    },
+    {
+        "id": 6,
+        "name": "Fiona Green",
+        "address": "303 Elm St, Springfield, IL",
+        "email": "fiona.green@example.com",
+        "phone": "+1 555-5566",
+        "loaned_book_ids": []
+    },
+    {
+        "id": 7,
+        "name": "George Harris",
+        "address": "404 Willow St, Springfield, IL",
+        "email": "george.harris@example.com",
+        "phone": "+1 555-7788",
+        "loaned_book_ids": [5]
+    },
+    {
+        "id": 8,
+        "name": "Helen King",
+        "address": "505 Pine Rd, Springfield, IL",
+        "email": "helen.king@example.com",
+        "phone": "+1 555-9900",
+        "loaned_book_ids": [6, 7]
+    },
+    {
+        "id": 9,
+        "name": "Ian Lee",
+        "address": "606 Maple Blvd, Springfield, IL",
+        "email": "ian.lee@example.com",
+        "phone": "+1 555-2233",
+        "loaned_book_ids": []
+    },
+    {
+        "id": 10,
+        "name": "Jane Mitchell",
+        "address": "707 Oak Ln, Springfield, IL",
+        "email": "jane.mitchell@example.com",
+        "phone": "+1 555-4455",
+        "loaned_book_ids": [8]
+    }
+]

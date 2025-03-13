@@ -3,8 +3,29 @@
 {% block title %}Book Manager{% endblock %}
 
 {% block content %}
-    <div>
-        <h1>Welcome, {{ username }}!</h1>
-        <p>This is your Book Manager.</p>
-    </div>
+<h1>Library Books</h1>
+<div class="books-table">
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Publication year</th>
+                <th>Available Copies</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.publication_year }}</td>
+                <td class="available_copies">{{ book.available_copies }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}
