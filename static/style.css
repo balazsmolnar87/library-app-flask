@@ -4,9 +4,10 @@ body {
     padding: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Align items at the top */
     height: 100vh;
     background-color: #f4f4f4;
+    padding-top: 60px; /* Add space for the navbar */
 }
 
 .container {
@@ -15,8 +16,29 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: auto;
 }
+
+/*Table*/
+.books-table {
+    margin-top: 20px;
+}
+
+.available_copies {
+    text-align: center;
+}
+
+th {
+    background-color: #22cbe9;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {background-color: coral;}
 
 h1 {
     color: #333;
@@ -63,6 +85,7 @@ button:hover {
     top: 0px;
     width: 100%;
     padding: 10px;
+    z-index: 1000; /* Ensure the navbar is on top of other content */
 }
 
 .navbar ul {
@@ -88,5 +111,6 @@ button:hover {
 }
 
 .navbar a:hover {
+    border-radius: 5px;
     background-color: #0e535f;
 }
