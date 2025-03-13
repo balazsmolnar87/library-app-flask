@@ -1,11 +1,21 @@
 from flask import Flask, render_template, session, redirect, url_for, request
-import utils
+from models import *
+from utils import *
 import os
-from dotenv import load_dotenv
 
-load_dotenv()
 app = Flask(__name__)
 app.secret_key = os.getenv("FLASK_SECRET_KEY", "default-secret-for-dev")
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///library.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# Initialize the SQLAlchemy instance with the app
+db.init_app(app)
+
+# Create tables and populate with dummy data
+create_tables(app)
+populate_books_from_json(app)
+populate_readers_from_json(app)
 
 
 @app.route("/")
@@ -15,15 +25,18 @@ def index():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    if request.method == "POST":
-        username = request.form.get("username")
-        password = request.form.get("password")
-
-        if utils.check_credentials(username, password):
-            session["username"] = username
-            return redirect(url_for("dashboard"))
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        
+        if check_credentials(username, password):
+            session['username'] = username
+            return redirect(url_for('dashboard'))
         else:
             return "Invalid credentials. Try again."
+    
+    return render_template('index.html')
+
 
     return render_template("index.html")
 
@@ -37,16 +50,18 @@ def dashboard():
 
 @app.route("/book-manager")
 def book_manager():
-    if "username" not in session:
-        return redirect(url_for("login"))
-    return render_template("book_manager.html", username=session["username"])
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    books = Book.query.all()
+    return render_template('book_manager.html', books=books, username=session['username'])
 
 
-@app.route("/user-manager")
-def user_manager():
-    if "username" not in session:
-        return redirect(url_for("login"))
-    return render_template("user_manager.html", username=session["username"])
+@app.route('/reader-manager')
+def reader_manager():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    readers = Reader.query.all()
+    return render_template('reader_manager.html', readers=readers, username=session['username'])
 
 
 @app.route("/logout")

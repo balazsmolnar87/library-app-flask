@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}User Manager{% endblock %}
+
+{% block content %}
+    <div>
+        <h1>Welcome, {{ username }}!</h1>
+        <p>This is your Reader Manager.</p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Loaned Books</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reader in readers %}
+                    <tr>
+                        <td>{{ reader.id }}</td>
+                        <td>{{ reader.name }}</td>
+                        <td>{{ reader.address }}</td>
+                        <td>{{ reader.email }}</td>
+                        <td>{{ reader.phone }}</td>
+                        <td>
+                            {% if reader.loaned_books %}
+                                <ul>
+                                    {% for book_id in reader.loaned_books %}
+                                        <li>Book ID: {{ book_id }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <p>No books loaned.</p>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
