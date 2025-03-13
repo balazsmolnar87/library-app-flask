@@ -3,9 +3,10 @@ from models import *
 from utils import *
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import os
 
 app = Flask(__name__)
-app.secret_key = "946fc61909983c886d51b76cd5b2859e5701b3f74d5dae1c25678e9fa415536b"
+app.secret_key = os.getenv("FLASK_SECRET_KEY", "default-secret-for-dev")
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///library.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
